@@ -10,6 +10,8 @@
 
     <!--Description-->
     
+        <meta name="description" content="开篇不知为什么，老夫突然想搞个奇怪的APP出来玩一玩。该APP中需要加入一个天气信息，找了半天，发现所有的API不是收费就是免费弱鸡版。。。完全达不到要求嘛。便找了一个很牛的天气平台试图做一些不可告人的事，于是乎又发现一个很严肃很蛋疼的问题。之前后台直接返回的数据多半是json，还有一些XML。但是">
+    
 
     <!--Author-->
     
@@ -18,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="胖虎的博客">
+        <meta property="og:title" content="iOS数据解析之HTML篇">
     
 
     <!--Open Graph Description-->
@@ -29,7 +31,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website">
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
@@ -40,7 +42,7 @@
 
     <!-- Title -->
     
-    <title>胖虎的博客</title>
+    <title>iOS数据解析之HTML篇 - 胖虎的博客</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -117,17 +119,14 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">胖虎的博客</h1>
-        
     </div>
 </header>
 
         <section class="main">
             
-                
 <div class="post">
 
-    <div class="post-header index">
+    <div class="post-header">
         <h1 class="title">
             <a href="/2019/04/26/iOS数据解析之HTML篇/">
                 iOS数据解析之HTML篇
@@ -142,9 +141,13 @@
         </div>
     </div>
 
-    
-        <div class="content">
-            <h1 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h1><p>不知为什么，老夫突然想搞个奇怪的APP出来玩一玩。该APP中需要加入一个天气信息，找了半天，发现所有的API不是收费就是免费弱鸡版。。。完全达不到要求嘛。便找了一个很牛的天气平台试图做一些不可告人的事，于是乎又发现一个很严肃很蛋疼的问题。之前后台直接返回的数据多半是json，还有一些XML。但是这次是HTML，仔细研究了一会，查了查资料，阿西吧！终于学会如何搞这个玩意。为了不会一觉醒来四大皆空，就在这里记录一下。</p>
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h1><p>不知为什么，老夫突然想搞个奇怪的APP出来玩一玩。该APP中需要加入一个天气信息，找了半天，发现所有的API不是收费就是免费弱鸡版。。。完全达不到要求嘛。便找了一个很牛的天气平台试图做一些不可告人的事，于是乎又发现一个很严肃很蛋疼的问题。之前后台直接返回的数据多半是json，还有一些XML。但是这次是HTML，仔细研究了一会，查了查资料，阿西吧！终于学会如何搞这个玩意。为了不会一觉醒来四大皆空，就在这里记录一下。</p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>来自某个诡异平台的数据，成这个奇怪的样子。<br><img src="http://upload-images.jianshu.io/upload_images/2619786-7719bb66596e74a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="http://upload-images.jianshu.io/upload_images/2619786-a5d7e77b7ad3ea97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>这就不能用之前处理XML时的方法做简单处理了，这里又不能用webView，所以只能用一些简单粗暴的方法来处理了，直接获取该连接的二进制数据，将其转码为utf8的格式，然后强行截取字符串，去除html标签。这是最简单最粗暴的方法。那么问题来了，当有多个标签需要处理时，仍旧使用这种方式处理时，相信我，你会去骂街的。这篇文章目的就是为了阻止你去骂街。</p>
 <h2 id="TFHpple库"><a href="#TFHpple库" class="headerlink" title="TFHpple库"></a>TFHpple库</h2><p>当我们只想要得到html中的某个标签时，在可以使用这个库，虽然这个库比较老了，但是，经典还真特么的就是经典！</p>
 <h4 id="环境的配置"><a href="#环境的配置" class="headerlink" title="环境的配置"></a>环境的配置</h4><h6 id="导入静态库"><a href="#导入静态库" class="headerlink" title="导入静态库"></a>导入静态库</h6><p><img src="http://upload-images.jianshu.io/upload_images/2619786-2b90fbab33c0221e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
@@ -159,18 +162,20 @@
 <h6 id="TFHppleElement的部分属性"><a href="#TFHppleElement的部分属性" class="headerlink" title="TFHppleElement的部分属性"></a>TFHppleElement的部分属性</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NSLog(@&quot;%@&quot;,HppleElement.raw);</span><br><span class="line">NSLog(@&quot;%@&quot;,HppleElement.text);</span><br><span class="line">NSLog(@&quot;%@&quot;,HppleElement.attributes);</span><br><span class="line">NSLog(@&quot;%@&quot;,HppleElement.tagName);</span><br><span class="line">NSLog(@&quot;%@&quot;,HppleElement.content);</span><br></pre></td></tr></table></figure>
 <p>此次教程到此结束，若是以后老夫再发现什么奇怪的坑再继续补充。</p>
 
-        </div>
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
     
 
 </div>
-            
         </section>
+
     </div>
 </div>
-
-
-
-
 
 
 </div>
